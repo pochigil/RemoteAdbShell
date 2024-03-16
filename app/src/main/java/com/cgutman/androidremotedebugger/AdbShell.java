@@ -424,7 +424,8 @@ public class AdbShell extends Activity implements DeviceConnectionListener, OnKe
 		stopApp("com.spotify.tv.android");
 		stopApp("com.smartdevice.common.demonow");
 		stopApp("com.mediatek.wwtv.tvcenter.overlay");
-		stopApp("com.koushikdutta.vysor");
+		stopApp("com.google.android.backdrop");
+		stopApp("com.android.dreams.basic");
 		stopApp("com.amazon.amazonvideo.livingroom");
 		stopApp("com.mediatek.wwtv.mediaplayer");
 		stopApp("com.mstar.android.tv.disclaimercustomization");
@@ -440,6 +441,7 @@ public class AdbShell extends Activity implements DeviceConnectionListener, OnKe
 		stopApp("com.google.android.apps.nbu.smartconnect.tv");
 		stopApp("com.Smartdevice.emanual");
 		stopApp("com.google.android.youtube.tv");
+		stopApp("com.google.android.youtube.tvmusic");
 		stopApp("com.android.mgstv");
 		stopApp("com.mediatek.tv.agent");
 		stopApp("com.google.android.play.games");
