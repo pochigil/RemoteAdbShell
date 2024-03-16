@@ -34,9 +34,6 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:inputType="text"
-        android:ems="10" >
-        
-        	<requestFocus />
-        </EditText>
+        android:ems="10" />
 
 </RelativeLayout>

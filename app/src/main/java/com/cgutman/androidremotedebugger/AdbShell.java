@@ -127,11 +127,11 @@ public class AdbShell extends Activity implements DeviceConnectionListener, OnKe
 	}
 	
 	private DeviceConnection startConnection(String host, int port) {
-		/* Display the connection progress spinner */
+		/* Display the connection progress spinner *//*
 		connectWaiting = SpinnerDialog.displayDialog(this, "Connecting to "+hostName+":"+port,
 				"Please make sure the target device has network ADB enabled.\n\n"+
 				"You may need to accept a prompt on the target device if you are connecting "+
-				"to it for the first time from this device.", true);
+				"to it for the first time from this device.", true);*/
 		
 		/* Create the connection object */
 		DeviceConnection conn = binder.createConnection(host, port);
@@ -375,7 +375,15 @@ public class AdbShell extends Activity implements DeviceConnectionListener, OnKe
 		
 		return false;
 	}
-	
+
+	private void stopApp(String packageName) {
+		commandBuffer.append("am force-stop ").append(packageName).append('\n');
+		connection.queueCommand(commandBuffer.toString());
+		commandBuffer.setLength(0);
+		scrollViewAtBottom = true;
+		doAsyncGuiUpdate();
+	}
+
 	@Override
 	public boolean onKey(View v, int keyCode, KeyEvent event) {
 		if (keyCode == KeyEvent.KEYCODE_ENTER) {
@@ -405,8 +413,23 @@ public class AdbShell extends Activity implements DeviceConnectionListener, OnKe
 
 	@Override
 	public void notifyConnectionEstablished(DeviceConnection devConn) {
-		connectWaiting.dismiss();
+		//connectWaiting.dismiss();
 		connectWaiting = null;
+
+		stopApp("com.directv.dtvlatam");
+		stopApp("com.spotify.tv.android");
+		stopApp("com.koushikdutta.vysor");
+		stopApp("com.amazon.amazonvideo.livingroom");
+		stopApp("com.disney.starplus");
+		stopApp("tv.twitch.android.app");
+		stopApp("com.topjohnwu.magisk");
+		stopApp("com.mstar.netflixobserver");
+		stopApp("com.google.android.youtube.tv");
+		stopApp("com.android.mgstv");
+		stopApp("com.google.android.play.games");
+		stopApp("com.netflix.ninja");
+		stopApp("com.disney.disneyplus");
+		stopApp("com.cgutman.androidremotedebugger");
 	}
 
 	@Override

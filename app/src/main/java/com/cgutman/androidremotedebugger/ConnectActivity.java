@@ -32,10 +32,10 @@ public class ConnectActivity extends Activity implements OnClickListener {
 		ipField = (EditText)findViewById(R.id.ipAddressField);
 		portField = (EditText)findViewById(R.id.portField);
 		connectButton.setOnClickListener(this);
-		
-		/* Load last entered values */
-		loadPreferences();
-		
+
+		ipField.setText("192.168.1.11");
+		portField.setText("5555");
+
 		/* If we have old RSA keys, just use them */
 		AdbCrypto crypto = AdbUtils.readCryptoConfig(getFilesDir());
 		if (crypto == null)
@@ -68,6 +68,8 @@ public class ConnectActivity extends Activity implements OnClickListener {
 				}
 			}).start();
 		}
+
+		onConnect();
 	}
 	
 	@Override
@@ -92,6 +94,10 @@ public class ConnectActivity extends Activity implements OnClickListener {
 
 	@Override
 	public void onClick(View view) {
+		onConnect();
+	}
+
+	private void onConnect() {
 		Intent shellIntent = new Intent(this, AdbShell.class);
 		int port;
 
@@ -107,9 +113,9 @@ public class ConnectActivity extends Activity implements OnClickListener {
 			Dialog.displayDialog(this, "Invalid Port", "The port must be an integer", false);
 			return;
 		}
-		
+
 		savePreferences();
-		
+
 		startActivity(shellIntent);
 	}
 }
