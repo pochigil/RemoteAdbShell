@@ -20,4 +20,6 @@ android {
 dependencies {
     implementation files('libs/AdbLib.jar')
     implementation 'androidx.core:core:1.7.0'
+    //noinspection GradleCompatible
+    implementation 'com.android.support:appcompat-v7:24.1.1'
 }
